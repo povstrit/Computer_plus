@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Магазин - Компьютер+</title>
+  <link rel="stylesheet" href="store.css">
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="logo">Компьютер+</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="about.html">О нас</a></li>
+      <li><a href="contacts.html">Контакты</a></li>
+      <li><a href="partners.html">Наши партнёры</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="store-section">
+    <h1>Каталог товаров</h1>
+
+    <div class="products">
+      <!-- Товар 1 -->
+      <div class="product">
+        <h2>Ноутбук Dell Inspiron 15</h2>
+        <p>Мощный и универсальный ноутбук с диагональю 15,6 дюйма</p>
+        <p class="price">Цена: 65 000 руб.</p>
+        <button class="add-to-cart" data-price="65000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 2 -->
+      <div class="product">
+        <h2>Игровой ПК MSI Trident 3</h2>
+        <p>Компактный игровой компьютер с мощной видеокартой</p>
+        <p class="price">Цена: 110 000 руб.</p>
+        <button class="add-to-cart" data-price="110000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 3 -->
+      <div class="product">
+        <h2>Монитор Samsung 27"</h2>
+        <p>Изогнутый монитор для работы и игр с разрешением QHD</p>
+        <p class="price">Цена: 30 000 руб.</p>
+        <button class="add-to-cart" data-price="30000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 4 -->
+      <div class="product">
+        <h2>Клавиатура Logitech G Pro X</h2>
+        <p>Механическая клавиатура с подсветкой для игр</p>
+        <p class="price">Цена: 10 000 руб.</p>
+        <button class="add-to-cart" data-price="10000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 5 -->
+      <div class="product">
+        <h2>Мышь Razer DeathAdder V2</h2>
+        <p>Оптическая мышь с высоким разрешением и точностью</p>
+        <p class="price">Цена: 5 000 руб.</p>
+        <button class="add-to-cart" data-price="5000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 6 -->
+      <div class="product">
+        <h2>SSD Samsung 970 EVO Plus 1TB</h2>
+        <p>Высокоскоростной SSD для быстрого доступа к данным</p>
+        <p class="price">Цена: 15 000 руб.</p>
+        <button class="add-to-cart" data-price="15000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 7 -->
+      <div class="product">
+        <h2>Видеокарта NVIDIA RTX 3060</h2>
+        <p>Отличное решение для игр и работы с графикой</p>
+        <p class="price">Цена: 45 000 руб.</p>
+        <button class="add-to-cart" data-price="45000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 8 -->
+      <div class="product">
+        <h2>Оперативная память Kingston 16GB DDR4</h2>
+        <p>Модуль оперативной памяти для повышения производительности</p>
+        <p class="price">Цена: 7 000 руб.</p>
+        <button class="add-to-cart" data-price="7000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 9 -->
+      <div class="product">
+        <h2>Блок питания Corsair RM850x</h2>
+        <p>Мощный блок питания на 850W для игровых систем</p>
+        <p class="price">Цена: 12 000 руб.</p>
+        <button class="add-to-cart" data-price="12000">Добавить в корзину</button>
+      </div>
+
+      <!-- Товар 10 -->
+      <div class="product">
+        <h2>Кулер для процессора Cooler Master Hyper 212</h2>
+        <p>Охладитель для процессоров с отличным соотношением цена/качество</p>
+        <p class="price">Цена: 3 500 руб.</p>
+        <button class="add-to-cart" data-price="3500">Добавить в корзину</button>
+      </div>
+    </div>
+
+    <!-- Корзина -->
+    <div class="cart">
+      <h2>Корзина</h2>
+      <p>Итого: <span id="total-price">0</span> руб.</p>
+      <button id="clear-cart">Очистить корзину</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Компьютер+. Все права защищены.</p>
+</footer>
+
+
+<script src="script.js"></script>
+<script>
+
+  function calculation(cartItems) {
+    let total = 0;
+    for (let price of cartItems) {
+      total += price;
+    }
+    return total;
+  }
+
+
+  let cartItems = [];
+
+
+  const buttons = document.querySelectorAll('.add-to-cart');
+  const totalPriceElement = document.getElementById('total-price');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      const price = parseInt(button.getAttribute('data-price'));
+      cartItems.push(price);
+      totalPriceElement.textContent = calculation(cartItems);
+    });
+  });
+
+
+  document.getElementById('clear-cart').addEventListener('click', function() {
+    cartItems = [];
+    totalPriceElement.textContent = 0;
+  });
+</script>
+</body>
+</html>

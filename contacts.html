@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Контакты - Компьютер+</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">Компьютер+</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="store.html">Магазин</a></li>
+            <li><a href="partners.html">Наши партнёры</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="contact-section">
+        <h1>Свяжитесь с нами</h1>
+        <p>Если у вас есть вопросы, предложения или пожелания, пожалуйста, свяжитесь с нами через форму ниже. Мы будем рады помочь вам!</p>
+
+        <!-- Форма для отправки контактов -->
+        <form id="contact-form" class="contact-form">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+
+            <label for="email">Ваш email:</label>
+            <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" placeholder="Введите ваше сообщение" rows="5" required></textarea>
+
+            <button type="button" id="submit-button">Отправить</button>
+        </form>
+
+        <div id="response-message" class="response-message"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Компьютер+. Все права защищены.</p>
+</footer>
+
+
+<script src="script.js"></script>
+<script>
+
+    document.getElementById('submit-button').addEventListener('click', function() {
+        // Получаем данные из формы
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+
+        if (name && email && message) {
+
+            document.getElementById('response-message').textContent = 'Спасибо, ' + name + '! Ваше сообщение отправлено.';
+
+
+            document.getElementById('contact-form').reset();
+        } else {
+
+            document.getElementById('response-message').textContent = 'Пожалуйста, заполните все поля.';
+        }
+    });
+</script>
+</body>
+</html>
